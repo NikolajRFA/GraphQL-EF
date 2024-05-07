@@ -5,8 +5,8 @@ namespace GraphQL_EF.Queries;
 
 public class Query
 {
-    private BookDataService _bds = new();
-    private AuthorDataService _ads = new();
+    private readonly BookDataService _bds = new();
+    private readonly AuthorDataService _ads = new();
     
     [GraphQLDescription("Returns all Books")]
     public IEnumerable<Book> GetBooks() => _bds.GetBooks();

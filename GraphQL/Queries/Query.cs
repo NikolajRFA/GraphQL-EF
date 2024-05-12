@@ -7,6 +7,7 @@ public class Query
 {
     private readonly BookDataService _bds = new();
     private readonly AuthorDataService _ads = new();
+    private readonly PublisherDataService _pds = new();
     
     [GraphQLDescription("Returns all Books")]
     public IEnumerable<Book> GetBooks() => _bds.GetBooks();
@@ -21,4 +22,7 @@ public class Query
 
     [GraphQLDescription("Returns all Authors")]
     public IEnumerable<Author> GetAuthors() => _ads.GetAuthors();
+
+    [GraphQLDescription("Returns all Publishers")]
+    public IEnumerable<Publisher> GetPublishers() => _pds.GetPublishers();
 }

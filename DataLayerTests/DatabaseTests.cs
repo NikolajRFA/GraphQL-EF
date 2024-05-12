@@ -17,8 +17,11 @@ public class DatabaseTests
     public void Database_GetFirstBookAndAuthor_GetsFirstBookAndAuthorSuccessfully()
     {
         var db = new Database();
-        var book = db.Books.Include(x => x.Author).FirstOrDefault()!;
-        _testOutputHelper.WriteLine($"Book: {book.Title} by {book.Author.Name}");
+        var book = db.Books
+            .Include(x => x.Author)
+            .Include(book => book.Publisher)
+            .FirstOrDefault()!;
+        _testOutputHelper.WriteLine($"Book: {book.Title} by {book.Author.Name} published by {book.Publisher.Name}");
         Assert.NotNull(db.Books.FirstOrDefault());
     }
 }
